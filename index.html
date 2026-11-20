@@ -1,0 +1,799 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <meta name="description" content="NutriControl - Sistema demonstrativo de controle de notas fiscais e estoque.">
+
+    <title>NutriControl | Gestão de Nutrição</title>
+
+    <!-- Ícone da guia do navegador -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Arquivos CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <div class="brand">
+
+                <!-- ÍCONE DE NUTRIÇÃO -->
+                <svg class="brand-icon"
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 64 64"
+                     aria-hidden="true">
+
+                    <circle cx="32" cy="32" r="29" fill="#e8f5e9"/>
+
+                    <path d="M18 38 C18 23 31 14 47 16 C46 32 36 45 21 45"
+                          fill="#2e7d32"/>
+
+                    <path d="M20 45 C28 35 35 28 45 20"
+                          fill="none"
+                          stroke="#ffffff"
+                          stroke-width="3"
+                          stroke-linecap="round"/>
+
+                    <path d="M14 48 Q32 58 50 48"
+                          fill="none"
+                          stroke="#81c784"
+                          stroke-width="3"
+                          stroke-linecap="round"/>
+
+                </svg>
+
+                <div>
+                    <h1>NutriControl</h1>
+                    <span>Gestão de Nutrição</span>
+                </div>
+
+            </div>
+
+           
+<nav class="navigation">
+
+    <span class="nav-title">MENU PRINCIPAL</span>
+
+    <a href="#dashboard" class="nav-link active" data-page="dashboard">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="8" height="8" rx="1"/>
+            <rect x="13" y="3" width="8" height="5" rx="1"/>
+            <rect x="13" y="10" width="8" height="11" rx="1"/>
+            <rect x="3" y="13" width="8" height="8" rx="1"/>
+        </svg>
+        Dashboard
+    </a>
+
+    <a href="#notas" class="nav-link" data-page="notas">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2h9l5 5v15H6z"/>
+            <path d="M14 2v6h6"/>
+            <path d="M9 13h8"/>
+            <path d="M9 17h8"/>
+        </svg>
+        Notas fiscais
+    </a>
+
+    <a href="#produtos" class="nav-link" data-page="produtos">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 7 9-4 9 4-9 4z"/>
+            <path d="M3 7v10l9 4 9-4V7"/>
+            <path d="M12 11v10"/>
+        </svg>
+        Estoque
+    </a>
+
+    <a href="#movimentacoes" class="nav-link" data-page="movimentacoes">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 7h13l-3-3"/>
+            <path d="m20 7-3 3"/>
+            <path d="M17 17H4l3 3"/>
+            <path d="m4 17 3-3"/>
+        </svg>
+        Movimentações
+    </a>
+
+    <span class="nav-title">SISTEMA</span>
+
+    <a href="#sobre" class="nav-link" data-page="sobre">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 11v5"/>
+            <path d="M12 8h.01"/>
+        </svg>
+        Sobre o projeto
+    </a>
+
+</nav>
+
+
+            <div class="sidebar-footer">
+                <span>NutriControl</span>
+                <small>Projeto acadêmico A1</small>
+            </div>
+
+        </aside>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content">
+
+            <!-- CABEÇALHO -->
+            <header class="topbar">
+
+                <div>
+                    <span class="topbar-subtitle">PAINEL ADMINISTRATIVO</span>
+                    <h2>Controle de Nutrição</h2>
+                </div>
+
+                <div class="user-info">
+                    <div class="user-avatar">A</div>
+
+                    <div>
+                        <strong>Administrador</strong>
+                        <small>grsantiago</small>
+                    </div>
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD -->
+            <section class="page active" id="dashboard">
+
+                <div class="page-heading">
+                    <div>
+                        <h2>Dashboard</h2>
+                        <p>Visão geral do estoque e das notas fiscais.</p>
+                    </div>
+                </div>
+
+                
+<!-- INDICADORES -->
+<div class="stats-grid">
+
+    <!-- TOTAL DE NOTAS -->
+    <article class="stat-card">
+        <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6M8 13h8M8 17h8"/>
+            </svg>
+        </div>
+        <div>
+            <span>Total de notas</span>
+            <h3 id="total-invoices">0</h3>
+        </div>
+    </article>
+
+    <!-- PRODUTOS CADASTRADOS -->
+    <article class="stat-card">
+        <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3 9 5-9 5-9-5 9-5Z"/>
+                <path d="m3 8 9 5 9-5M3 8v9l9 5 9-5V8M12 13v9"/>
+            </svg>
+        </div>
+        <div>
+            <span>Produtos cadastrados</span>
+            <h3 id="total-products">0</h3>
+        </div>
+    </article>
+
+    <!-- ESTOQUE BAIXO -->
+    <article class="stat-card">
+        <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="m10.3 3.9-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3.1l-8-14a2 2 0 0 0-3.4 0Z"/>
+                <path d="M12 9v4M12 17h.01"/>
+            </svg>
+        </div>
+        <div>
+            <span>Estoque baixo</span>
+            <h3 id="low-stock">0</h3>
+        </div>
+    </article>
+
+    <!-- VALOR EM NOTAS -->
+    <article class="stat-card">
+        <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="5" width="20" height="14" rx="2"/>
+                <path d="M2 10h20M6 15h3M16 15h2"/>
+            </svg>
+        </div>
+        <div>
+            <span>Valor em notas</span>
+            <h3 id="invoice-total">R$ 0,00</h3>
+        </div>
+    </article>
+
+</div>
+
+
+
+                <!-- TABELA DE NOTAS RECENTES -->
+                <section class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Notas fiscais recentes</h3>
+                            <p>Últimos registros cadastrados.</p>
+                        </div>
+
+                        <a href="#notas" class="text-link" data-page="notas">
+                            Ver todas
+                        </a>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Número</th>
+                                    <th>Fornecedor</th>
+                                    <th>Data</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="dashboard-invoices">
+                                <tr>
+                                    <td colspan="4" class="empty-state">
+                                        Nenhuma nota cadastrada.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ALERTAS DE ESTOQUE -->
+                <section class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Alertas de estoque</h3>
+                            <p>Produtos que precisam de atenção.</p>
+                        </div>
+                    </div>
+
+                    <div id="dashboard-alerts" class="alerts-container">
+                        <p class="empty-state">
+                            Nenhum alerta no momento.
+                        </p>
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- NOTAS FISCAIS -->
+            <section class="page" id="notas">
+
+                <div class="page-heading">
+                    <div>
+                        <h2>Notas fiscais</h2>
+                        <p>Cadastre e acompanhe as notas fiscais recebidas.</p>
+                    </div>
+
+                    <button class="btn btn-primary" id="new-invoice-btn">
+                        + Nova nota fiscal
+                    </button>
+                </div>
+
+                <section class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Registros de notas fiscais</h3>
+                            <p>Consulte os documentos cadastrados.</p>
+                        </div>
+
+                        <input
+                            type="search"
+                            id="invoice-search"
+                            placeholder="Pesquisar nota ou fornecedor..."
+                        >
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Número</th>
+                                    <th>Fornecedor</th>
+                                    <th>Data</th>
+                                    <th>Valor</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="invoice-list">
+                                <tr>
+                                    <td colspan="5" class="empty-state">
+                                        Nenhuma nota cadastrada.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- ESTOQUE -->
+            <section class="page" id="produtos">
+
+                <div class="page-heading">
+                    <div>
+                        <h2>Controle de estoque</h2>
+                        <p>Cadastre produtos e acompanhe as quantidades disponíveis.</p>
+                    </div>
+
+                    <button class="btn btn-primary" id="new-product-btn">
+                        + Novo produto
+                    </button>
+                </div>
+
+                <section class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Produtos cadastrados</h3>
+                            <p>Consulte os itens disponíveis no estoque.</p>
+                        </div>
+
+                        <input
+                            type="search"
+                            id="product-search"
+                            placeholder="Pesquisar produto..."
+                        >
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Categoria</th>
+                                    <th>Unidade</th>
+                                    <th>Estoque atual</th>
+                                    <th>Estoque mínimo</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="product-list">
+                                <tr>
+                                    <td colspan="6" class="empty-state">
+                                        Nenhum produto cadastrado.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- MOVIMENTAÇÕES -->
+            <section class="page" id="movimentacoes">
+
+                <div class="page-heading">
+                    <div>
+                        <h2>Movimentações</h2>
+                        <p>Registre entradas e saídas de produtos do estoque.</p>
+                    </div>
+
+                    <button class="btn btn-primary" id="new-movement-btn">
+                        + Nova movimentação
+                    </button>
+                </div>
+
+                <section class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Histórico de movimentações</h3>
+                            <p>Registros de entrada e saída de produtos.</p>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Produto</th>
+                                    <th>Tipo</th>
+                                    <th>Quantidade</th>
+                                    <th>Observação</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="movement-list">
+                                <tr>
+                                    <td colspan="5" class="empty-state">
+                                        Nenhuma movimentação registrada.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- SOBRE O PROJETO -->
+            <section class="page" id="sobre">
+
+                <div class="page-heading">
+                    <div>
+                        <h2>Sobre o NutriControl</h2>
+                        <p>Conheça a proposta do projeto acadêmico.</p>
+                    </div>
+                </div>
+
+                <section class="panel about-panel">
+
+                    <h3>O que é o NutriControl?</h3>
+
+                    <p>
+                        O NutriControl é uma plataforma demonstrativa
+                        desenvolvida para representar processos
+                        administrativos relacionados ao controle de
+                        notas fiscais, estoque e movimentações de produtos
+                        no setor de nutrição hospitalar.
+                    </p>
+
+                    <h3>Objetivo</h3>
+
+                    <p>
+                        Demonstrar como ferramentas de desenvolvimento
+                        web podem auxiliar na organização de informações
+                        e no acompanhamento de processos administrativos.
+                    </p>
+
+                    <h3>Tecnologias utilizadas</h3>
+
+                    <div class="technology-list">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>LocalStorage</span>
+                        <span>GitHub Pages</span>
+                    </div>
+
+                    <div class="notice">
+                        <strong>Importante:</strong>
+                        Este projeto é exclusivamente acadêmico e
+                        demonstrativo. Todos os registros são
+                        fictícios. Não utilizei dados de pacientes,
+                        documentos fiscais reais ou informações internas
+                        de instituições.
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- RODAPÉ -->
+            <footer class="main-footer">
+                <p>
+                    NutriControl © 2026 —
+                    Todos os direitos reservados :: Desenvolvido por Gabriel Rodrigues Santiago
+                </p>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- MODAL: NOTA FISCAL -->
+    <div class="modal" id="invoice-modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div>
+                    <h2 id="invoice-modal-title">Nova nota fiscal</h2>
+                    <p>Preencha os dados do documento.</p>
+                </div>
+
+                <button type="button" class="modal-close" data-close>
+                    ×
+                </button>
+            </div>
+
+            <form id="invoice-form">
+
+                <input type="hidden" id="invoice-id">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="invoice-number">Número da nota</label>
+                        <input type="text" id="invoice-number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="invoice-date">Data de emissão</label>
+                        <input type="date" id="invoice-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="invoice-supplier">Fornecedor fictício</label>
+                        <input type="text" id="invoice-supplier" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="invoice-value">Valor total (R$)</label>
+                        <input
+                            type="number"
+                            id="invoice-value"
+                            min="0.01"
+                            step="0.01"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="invoice-observation">Observações</label>
+                        <textarea
+                            id="invoice-observation"
+                            rows="3"
+                            placeholder="Informações adicionais..."
+                        ></textarea>
+                    </div>
+
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" data-close>
+                        Cancelar
+                    </button>
+
+                    <button type="submit" class="btn btn-primary">
+                        Salvar nota
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- MODAL: PRODUTO -->
+    <div class="modal" id="product-modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div>
+                    <h2 id="product-modal-title">Novo produto</h2>
+                    <p>Cadastre um produto no estoque.</p>
+                </div>
+
+                <button type="button" class="modal-close" data-close>
+                    ×
+                </button>
+            </div>
+
+            <form id="product-form">
+
+                <input type="hidden" id="product-id">
+
+                <div class="form-grid">
+
+                    <div class="form-group full-width">
+                        <label for="product-name">Nome do produto</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-category">Categoria</label>
+                        <select id="product-category" required>
+                            <option value="">Selecione</option>
+                            <option value="Alimentos">Alimentos</option>
+                            <option value="Bebidas">Bebidas</option>
+                            <option value="Descartáveis">Descartáveis</option>
+                            <option value="Higiene">Higiene</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-unit">Unidade</label>
+                        <select id="product-unit" required>
+                            <option value="">Selecione</option>
+                            <option value="Unidade">Unidade</option>
+                            <option value="Pacote">Pacote</option>
+                            <option value="Caixa">Caixa</option>
+                            <option value="Kg">Kg</option>
+                            <option value="Litro">Litro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-stock">Estoque atual</label>
+                        <input
+                            type="number"
+                            id="product-stock"
+                            min="0"
+                            step="0.01"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-minimum">Estoque mínimo</label>
+                        <input
+                            type="number"
+                            id="product-minimum"
+                            min="0"
+                            step="0.01"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" data-close>
+                        Cancelar
+                    </button>
+
+                    <button type="submit" class="btn btn-primary">
+                        Salvar produto
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- MODAL: MOVIMENTAÇÃO -->
+    <div class="modal" id="movement-modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div>
+                    <h2>Nova movimentação</h2>
+                    <p>Registre uma entrada ou saída de estoque.</p>
+                </div>
+
+                <button type="button" class="modal-close" data-close>
+                    ×
+                </button>
+            </div>
+
+            <form id="movement-form">
+
+                <div class="form-grid">
+
+                    <div class="form-group full-width">
+                        <label for="movement-product">Produto</label>
+                        <select id="movement-product" required>
+                            <option value="">Selecione um produto</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="movement-type">Tipo de movimentação</label>
+                        <select id="movement-type" required>
+                            <option value="">Selecione</option>
+                            <option value="Entrada">Entrada</option>
+                            <option value="Saída">Saída</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="movement-quantity">Quantidade</label>
+                        <input
+                            type="number"
+                            id="movement-quantity"
+                            min="0.01"
+                            step="0.01"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="movement-observation">Observação</label>
+                        <textarea
+                            id="movement-observation"
+                            rows="3"
+                            placeholder="Descreva o motivo da movimentação..."
+                        ></textarea>
+                    </div>
+
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" data-close>
+                        Cancelar
+                    </button>
+
+                    <button type="submit" class="btn btn-primary">
+                        Registrar movimentação
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- MENSAGENS DO SISTEMA -->
+    <div id="toast-container" class="toast-container"></div>
+
+
+    <!-- ARQUIVOS JAVASCRIPT -->
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

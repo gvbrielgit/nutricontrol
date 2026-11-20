@@ -1,0 +1,799 @@
+
+/* =========================================
+   NUTRICONTROL - ESTILIZAÇÃO PRINCIPAL
+   Arquivo: css/style.css
+   Identidade visual: Verde institucional
+========================================= */
+
+
+/* 1. VARIÁVEIS GLOBAIS */
+
+:root {
+    --primary: #2D6A4F;
+    --primary-dark: #1B4332;
+    --primary-light: #DDE9DF;
+
+    --background: #C5D8C8;
+    --surface: #D0E2D2;
+
+    --text: #26372D;
+    --text-light: #718078;
+
+    --border: #E0E9E1;
+
+    --success: #218653;
+    --warning: #D28A20;
+    --danger: #C74747;
+
+    --font-family: 'Manrope', sans-serif;
+
+    --sidebar-width: 250px;
+
+    --radius: 12px;
+    --shadow: 0 3px 14px rgba(27, 67, 50, 0.07);
+}
+
+
+/* 2. CONFIGURAÇÕES GERAIS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: var(--background);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* 3. ESTRUTURA PRINCIPAL */
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    margin-left: var(--sidebar-width);
+    padding: 28px 32px;
+}
+
+
+/* 4. MENU LATERAL */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: #1B4332;
+    color: #FFFFFF;
+    padding: 26px 18px;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+
+.brand h1 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.brand span {
+    font-size: 11px;
+    color: #B9D1C5;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding-top: 28px;
+}
+
+.nav-title {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #A8C5B7;
+    margin: 15px 10px 8px;
+    font-weight: bold;
+}
+
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    color: #D4E3DC;
+    transition: 
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        color 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Efeito ao passar o cursor */
+.nav-link:hover {
+    transform: translateX(5px);
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #FFFFFF;
+}
+
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.10);
+    color: #FFFFFF;
+}
+
+.nav-link.active {
+    background: #FFFFFF;
+    color: #1B4332;
+    font-weight: bold;
+}
+
+
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    display: inline-block;
+    color: inherit;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+/* Movimento do ícone ao passar o cursor */
+.nav-link:hover .nav-icon {
+    transform: scale(1.12);
+}
+
+
+.nav-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+}
+
+.nav-link:hover .nav-icon {
+    transform: scale(1.1);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 18px 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-weight: bold;
+}
+
+.sidebar-footer small {
+    color: #A8C5B7;
+    font-weight: normal;
+}
+
+
+/* 5. BARRA SUPERIOR */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 34px;
+}
+
+.topbar-subtitle {
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--primary);
+}
+
+.topbar h2 {
+    font-size: 23px;
+    margin-top: 3px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.user-info strong,
+.user-info small {
+    display: block;
+}
+
+.user-info strong {
+    font-size: 13px;
+}
+
+.user-info small {
+    color: var(--text-light);
+    font-size: 11px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+/* 6. PÁGINAS */
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.page-heading h2 {
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+
+.page-heading p,
+.panel-header p {
+    color: var(--text-light);
+    font-size: 12px;
+}
+
+
+/* 7. CARDS DO DASHBOARD */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(27, 67, 50, 0.10);
+}
+
+.stat-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 11px;
+    background: var(--primary-light);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stat-icon svg {
+    width: 21px;
+    height: 21px;
+    stroke: currentColor;
+}
+
+.stat-card span {
+    display: block;
+    color: var(--text-light);
+    font-size: 11px;
+}
+
+.stat-card h3 {
+    font-size: 21px;
+    margin-top: 4px;
+    overflow-wrap: anywhere;
+}
+
+
+/* 8. PAINÉIS E SEÇÕES */
+
+.panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.panel-header h3 {
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+
+.text-link {
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+
+/* 9. TABELAS */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 550px;
+}
+
+thead {
+    background: #F2F6F1;
+}
+
+th {
+    color: var(--text-light);
+    font-size: 11px;
+    text-align: left;
+    padding: 13px 12px;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+}
+
+tbody tr:hover {
+    background: #F8FAF7;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-light);
+    padding: 28px 12px;
+}
+
+
+/* 10. BOTÕES */
+
+.btn {
+    border: none;
+    border-radius: 8px;
+    padding: 11px 16px;
+    font-weight: bold;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    transition: 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-secondary {
+    background: #E8EFE9;
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    background: #DDE8DE;
+}
+
+.btn-danger {
+    background: #FCEAEA;
+    color: var(--danger);
+}
+
+.btn-danger:hover {
+    background: #F7DADA;
+}
+
+
+/* 11. FORMULÁRIOS */
+
+input,
+select,
+textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 11px 12px;
+    color: var(--text);
+    background: #FFFFFF;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.12);
+}
+
+input[type="search"] {
+    max-width: 260px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group label {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+
+/* 12. MODAIS */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 30, 22, 0.55);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal.open {
+    display: flex;
+}
+
+.modal-content {
+    background: #FFFFFF;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.18);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    gap: 15px;
+}
+
+.modal-header h2 {
+    font-size: 19px;
+}
+
+.modal-header p {
+    color: var(--text-light);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.modal-close {
+    border: none;
+    background: transparent;
+    color: var(--text-light);
+    font-size: 27px;
+    line-height: 1;
+    padding: 0 4px;
+}
+
+.modal-close:hover {
+    color: var(--danger);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+
+/* 13. BADGES DE STATUS */
+
+.badge {
+    display: inline-block;
+    border-radius: 20px;
+    padding: 5px 9px;
+    font-size: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.badge-success {
+    background: #E5F5EB;
+    color: #218653;
+}
+
+.badge-warning {
+    background: #FFF3DC;
+    color: #A86B0D;
+}
+
+.badge-danger {
+    background: #FCE8E8;
+    color: #BD3D3D;
+}
+
+.badge-neutral {
+    background: #EDF1EE;
+    color: #66756C;
+}
+
+
+/* 14. ALERTAS */
+
+.alerts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.alert-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 13px;
+    background: #FFF9EC;
+    border: 1px solid #F2E3C3;
+    border-radius: 8px;
+}
+
+.alert-item strong {
+    font-size: 12px;
+}
+
+.alert-item span {
+    font-size: 11px;
+    color: #A86B0D;
+}
+
+
+/* 15. BOTÕES DE AÇÃO DAS TABELAS */
+
+.table-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.action-btn {
+    border: none;
+    border-radius: 6px;
+    padding: 6px 9px;
+    font-size: 11px;
+    font-weight: bold;
+    background: #E8F0E9;
+    color: var(--primary);
+}
+
+.action-btn:hover {
+    background: #DCEBE2;
+}
+
+.action-btn.delete {
+    background: #FCEAEA;
+    color: var(--danger);
+}
+
+.action-btn.delete:hover {
+    background: #F7DADA;
+}
+
+
+/* 16. SOBRE O PROJETO */
+
+.about-panel {
+    max-width: 900px;
+}
+
+.about-panel h3 {
+    font-size: 15px;
+    margin: 22px 0 8px;
+}
+
+.about-panel h3:first-child {
+    margin-top: 0;
+}
+
+.about-panel p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.technology-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin: 14px 0 22px;
+}
+
+.technology-list span {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.notice {
+    padding: 16px;
+    border-left: 4px solid var(--warning);
+    background: #FFF9EC;
+    color: #75551D;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* 17. NOTIFICAÇÕES */
+
+.toast-container {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 2000;
+}
+
+.toast {
+    min-width: 240px;
+    max-width: 350px;
+    padding: 14px 18px;
+    background: #1B4332;
+    color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    animation: toast-enter 0.25s ease;
+}
+
+.toast.error {
+    background: #A93232;
+}
+
+.toast.success {
+    background: #218653;
+}
+
+@keyframes toast-enter {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* 18. RODAPÉ */
+
+.main-footer {
+    padding: 25px 0 5px;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 11px;
+}
+
+
+/* 19. ACESSIBILIDADE */
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid #E5B84C;
+    outline-offset: 3px;
+}
